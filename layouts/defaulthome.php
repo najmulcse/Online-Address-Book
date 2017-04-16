@@ -115,7 +115,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="add_contact_button">
-                        <a class=" btn btn-success " href="addNewContacts.php"><i class="fa fa-fw fa-dashboard"></i> Add new contact</a>
+                        <a class=" btn btn-success " href="#"><i class="fa fa-fw fa-dashboard"></i> Add new contact</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Import</a>
