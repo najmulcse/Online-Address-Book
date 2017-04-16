@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar">
+<nav class="navbar navbar-default navbar-statis-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -12,19 +12,19 @@
 
             <!-- Branding Image -->
            
-<?php
-$username="";
-if( isset($_SESSION['username']) ){
-           
+        <?php
+        $username="";
+        if( isset($_SESSION['username']) ){
+                   
            // header("Location: home.php");
 
             ?>
             <a class="navbar-brand" href="home.php">
-                Online Contact Book
+                Online Address Book
             </a>
             <?php } else { ?>
             <a class="navbar-brand" href="index.php">
-                Online Contact Book
+                Online Address Book
             </a>
             <?php } ?>
 
