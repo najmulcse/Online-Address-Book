@@ -74,7 +74,7 @@ include "include/header.php";
                 $check_username =mysqli_num_rows($query_username_result);
                 if($check_username!=0){
                     $error = true;
-                    $userError = "Provided Username is already in use.";
+                    $usernameError = "Provided Username is already in use.";
                 }
 
             }

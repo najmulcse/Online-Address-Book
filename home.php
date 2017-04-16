@@ -165,12 +165,13 @@
                             </div>
                         </div>
                         <h1 class="page-header"> <ol class="breadcrumb">   Contacts </ol>  </h1>
-                       
+                       <div style="height: 400px; overflow: auto;">
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th>Name</th> 
                                 <th>Mobile</th>
+                                <th>City</th>
                                 <th>Details</th>
                                 <th>Edit</th>
                                 <th>Delete</th> 
@@ -178,16 +179,31 @@
                             </thead>
 
                             <tbody>
+
+                            <?php
+                            $query = "SELECT user_id from users where username='$username'";
+                            $query_username_result = mysqli_query($connection,$query);
+                            $row=mysqli_fetch_array($query_username_result);
+
+                            $user_id=$row['user_id'];
+                            $query = "SELECT * from addresses where user_id='$user_id'";
+                            $query_username_result = mysqli_query($connection,$query);
+                           while( $row=mysqli_fetch_assoc($query_username_result)){ ?>
+
+                         
+                          
                                 <tr>
-                                <th>Najmul</th>
-                                <th>011222222</th>
+                                <th><?php   echo $row['full_name']; ?></th>
+                                <th><?php   echo $row['phone1']; ?></th>
+                                <th><?php   echo $row['city']; ?></th>
                                 <th><a  href="#"  class="btn btn-primary">Details</a></th>
                                 <th><a href="#" class="btn btn-success">Edit</a></th>
                                 <th><a href="#" class="btn btn-danger">Delete</a></th>    
                                 </tr>
-                                
+                             <?php    }  ?>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->

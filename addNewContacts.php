@@ -184,6 +184,9 @@
                             </form>
                             </div>
                         </div>
+                        <section>
+                    <div class="row">
+                    <div style="height: 600px;">
                         <h3 class="page-header"> <ol class="breadcrumb">   Please fill up the following fills  </ol>  </h3>
                        
         <?php
@@ -247,8 +250,9 @@
                         $query.="values('$user_id','$full_name','$nick_name','$email','$street_address','$city','$country','$post_code','$phone1','$phone2','$birthday','$website')";
                         $query_insert_result = mysqli_query($connection,$query);
                         if($query_insert_result){
+
                           echo $success_msg="Contact added successfully";
-                           //header("Location: home.php");
+                           header("Location: home.php");
                         }
                        
                       }
@@ -266,10 +270,10 @@
                        ?>
                        <!--Body of contacts -->
 
-                    <section>
-                    <div class="row">
+                    
                     <dir class="col-sm-2"></dir>
                     <div class="col-sm-6">
+                      <div style="300px; overflow: auto;">
                        <div class="panel">
                        <form action="addNewContacts.php" method="POST">
                               <div class="form-group">
@@ -546,6 +550,8 @@
                               </div>
                         </form>
                        </div>
+                       </div>
+                      </div>
                       </div>
                       <div class="col-sm-4"></div>
                       </div>
