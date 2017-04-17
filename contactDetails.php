@@ -189,16 +189,13 @@
                             $query = "SELECT * from addresses where user_id='$user_id'";
                             $query_username_result = mysqli_query($connection,$query);
                            while( $row=mysqli_fetch_assoc($query_username_result)){ ?>
-
-                         
-                          
                                 <tr>
                                 <td><?php   echo $row['full_name']; ?></td>
                                 <td><?php   echo $row['phone1']; ?></td>
                                 <td><?php   echo $row['city']; ?></td>
-                              <?php echo  " <td><a  type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong' href='#?id={$row['id']}&user_id={$user_id}' >Details</a></td>"; ?>
-                                <?php echo  " <td><a   href='contactEdit.php?edit_id={$row['id']}&user_id={$user_id}' class='btn btn-success' >Edit</a></td>"; ?>
-                                <?php echo  " <td><a  href='home.php?delete_id={$row['id']}' class='btn btn-danger' >Delete</a></td>"; ?>    
+                              <?php echo  " <td><a  href='contactDetails.php?id={$row['id']}&user_id={$user_id}' class='btn btn-primary' >Details</a></td>"; ?>
+                                <?php echo  " <td><a  href='contactEdit.php?edit_id={$row['id']}&user_id={$user_id}' class='btn btn-success' >Edit</a></td>"; ?>
+                                <?php echo  " <td><a  href='contactEdit.php?delete_id={$row['id']}' class='btn btn-danger' >Delete</a></td>"; ?>    
                                 </tr>
                              <?php    }  ?>
                             </tbody>
@@ -207,60 +204,26 @@
                     </div>
                 </div>
                 <!-- /.row -->
-<!-- for deleting a contact-->
 
-          <?php
+            </div>
+
+            <?php
 
             if(isset($_GET['delete_id']))
             {
                 $delete_id=$_GET['delete_id'];
                 $query="DELETE from addresses where id='$delete_id'";
                 $query_result=mysqli_query($connection,$query);
-                if($query_result)
-                {
-                    header("Location:home.php");
-                }
                 
             }    
              ?>
-            </div>
+            
             <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
 
     </div>
-
-<!--Modal  -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
     <!-- /#wrapper -->
 
     <!-- jQuery -->

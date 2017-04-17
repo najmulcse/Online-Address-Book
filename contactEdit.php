@@ -187,7 +187,7 @@
                         <section>
                     <div class="row">
                     <div style="height: 600px;">
-                        <h3 class="page-header"> <ol class="breadcrumb">   Please fill up the following fills  </ol>  </h3>
+                        <h3 class="page-header"> <ol class="breadcrumb">   Updated the contacts  </ol>  </h3>
                        
         <?php
                 $fullnameError="";
@@ -195,8 +195,43 @@
                 $phone1Error="";
 
                 $error=false;
-             if(isset($_POST['add_contact'])){
+                if(isset($_GET['edit_id']))
+                {
+                  $id=$_SESSION['edit_id']=$_GET['edit_id'];
+                  $user_id=$_SESSION['user_id']=$_GET['user_id'];
+                
+                $query = "SELECT * from addresses where id='$id'";
+                $query_contact_result = mysqli_query($connection,$query);
+                while($row =mysqli_fetch_assoc($query_contact_result))
+                {
+                  $user_id=$row['user_id'];
+                  $full_name= $row['full_name'];
+                  $nick_name=$row['nick_name'];
+                  $email=$row['email'];
+                  $street_address=$row['street_address'];
+                  $city=$row['city'];
+                  $country=$row['country'];
+                  $post_code=$row['post_code'];
+                  $phone1=$row['phone1'];
+                  $phone2=$row['phone2'];
+                  $website=$row['website'];
+                  $birthday=$row['birthday'];
+                }
+                 
+            }
 
+            
+      
+                   
+                      //updated code
+               
+                $fullnameError="";
+                $emailError="";
+                $phone1Error="";
+
+                $error=false;
+             if(isset($_POST['update_contact'])){
+                
                 $full_name=$_POST['full_name'];
                 $nick_name=$_POST['nick_name'];
                 $email= $_POST['email'];
@@ -216,158 +251,134 @@
                 $country = mysqli_real_escape_string($connection,$country);
                 $phone1 = mysqli_real_escape_string($connection,$phone1);
                 $phone2 = mysqli_real_escape_string($connection,$phone2);
-                $website = mysqli_real_escape_string($connection,$birthday);
+                $website = mysqli_real_escape_string($connection,$website);
                 $street_address = mysqli_real_escape_string($connection,$street_address);
                 $birthday=mysqli_real_escape_string($connection,$birthday);
-                 if (empty($full_name)) {
-                   $error = true;
-                   $fullnameError = "Please enter full name .";
-                   }
-                 else if (!preg_match("/^[a-zA-Z ]+$/",$full_name)) {
-                   $error = true;
-                   $fullnameError = "Name must contain alphabets and space.";
-                     }
-
-                     if (empty($email)) {
-                   $error = true;
-                   $emailError = "Please enter email  .";
-                   }
-
-                   if (empty($phone1)) {
-                   $error = true;
-                   $phone1Error = "Please enter phone number  .";
-                   }
-                if(!$error)
-                {
-                $query = "SELECT user_id from users where username='$username'";
-                $query_username_result = mysqli_query($connection,$query);
-                $row=mysqli_fetch_array($query_username_result);
-                $count_user =mysqli_num_rows($query_username_result);
-                 $user_id=$row['user_id'];
-                   if($count_user==true){
-                        $user_id=$row['user_id'];
-                        $query="INSERT INTO addresses(user_id,full_name,nick_name,email,street_address,city,country,post_code,phone1,phone2,birthday,website)";
-                        $query.="values('$user_id','$full_name','$nick_name','$email','$street_address','$city','$country','$post_code','$phone1','$phone2','$birthday','$website')";
+                 
+                $id=$_SESSION['edit_id'];
+              
+                        
+                        $query="UPDATE addresses SET full_name='$full_name',nick_name='$nick_name',email='$email',
+                        city='$city',street_address='$street_address',post_code='$post_code',country='$country',
+                        phone1='$phone1',phone2='$phone2',website='$website',birthday='$birthday' where id='$id'";
+                       
                         $query_insert_result = mysqli_query($connection,$query);
                         if($query_insert_result){
 
-                          echo $success_msg="Contact added successfully";
+                          echo $success_msg="Contact updated successfully";
                            header("Location: home.php");
                         }
-                       
-                      }
+                      
                       else
                       {
                     echo   $error="Something wrong";
                      //  header("Location: home.php");
                       }
-                }
+                
 
 
 
             
           }
                        ?>
-                       <!--Body of contacts -->
 
                     
                     <dir class="col-sm-2"></dir>
                     <div class="col-sm-6">
                       <div style="300px; overflow: auto;">
                        <div class="panel">
-                       <form action="addNewContacts.php" method="POST">
+                       <form action="contactEdit.php" method="POST">
                               <div class="form-group">
                                 <label for="name">Full Name *</label>
-                                <input type="text" class="form-control" name="full_name" placeholder="Full name">
-                                 <span class="text-danger"><?php echo $fullnameError ?></span>
+                                <input type="text" class="form-control" name="full_name" value='<?php echo $full_name;?>'>
                               </div>
                               <div class="form-group">
                                 <label for="nickname">Nick Name</label>
-                                <input type="text" class="form-control" name="nick_name" placeholder="Nick name">
+                                <input type="text" class="form-control" name="nick_name" value=<?php echo $nick_name;?> >
                               </div>
                                <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" value=<?php echo $email;?>>
                                  <span class="text-danger"><?php echo $emailError ?></span>
                               </div>
                               <div class="form-group">
                                <div class="form-group">
                                 <label for="phone1">Phone Number *</label>
-                                <input type="text" class="form-control" name="phone1" placeholder="Mobile 1 *">
+                                <input type="text" class="form-control" name="phone1" value=<?php echo $phone1;?>>
                                  <span class="text-danger"><?php echo $phone1Error ?></span>
-                                <input type="text" class="form-control" name="phone2" placeholder="Mobile 2(optional)">
+                                <input type="text" class="form-control" name="phone2" value=<?php echo $phone2;?>>
                               </div>
                                 <label for="street_address">Street address</label>
-                                <textarea type="text" class="form-control" name="street_address" placeholder="Street address" > </textarea>
+                                <textarea type="text" class="form-control" name="street_address" value=<?php echo $street_address;?> > </textarea>
                               </div>
                                <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" name="city" placeholder="City">
+                                <input type="text" class="form-control" name="city" value=<?php echo $city;?>>
                               </div>
                               <div class="form-group">
                                 <label for="postcode">Post Code</label>
-                                <input type="text" class="form-control" name="post_code" placeholder="Post code">
+                                <input type="text" class="form-control" name="post_code" value=<?php echo $post_code;?>>
                               </div>
                                <div class="form-group">
                                 <label for="name">Country</label>
                                  <select id="to-country-id" name="country" class="country last lastrow form-control">
-                                              <option value="">Select Country</option>
+                                              <option value='<?php echo $country;?>'> <?php echo $country;?></option>
                                               <option value="United States" >United States</option>
                                               <option value="Canada" >Canada</option>
                                               <option value="">--</option>
-                                              <option value="Afghanistan" >Afghanistan</option>
-                                              <option value="Albania" >Albania</option>
-                                              <option value="Algeria" >Algeria</option>
-                                              <option value="Andorra" >Andorra</option>
-                                              <option value="Angola" >Angola</option>
-                                              <option value="Anguilla" >Anguilla</option>
-                                              <option value="Antigua & Barbuda" >Antigua & Barbuda</option>
-                                              <option value="Argentina" >Argentina</option>
-                                              <option value="Armenia" >Armenia</option>
-                                              <option value="Aruba" >Aruba</option>
-                                              <option value="Australia" >Australia</option>
-                                              <option value="Austria" >Austria</option>
-                                              <option value="Azerbaijan" >Azerbaijan</option>
-                                              <option value="Bahamas" >Bahamas</option>
-                                              <option value="Bahrain" >Bahrain</option>
-                                              <option value="Bangladesh" >Bangladesh</option>
-                                              <option value="Barbados" >Barbados</option>
-                                              <option value="Belarus" >Belarus</option>
-                                              <option value="Belgium" >Belgium</option>
-                                              <option value="Belize" >Belize</option>
-                                              <option value="Bermuda" >Bermuda</option>
-                                              <option value="Bhutan" >Bhutan</option>
-                                              <option value="Bolivia" >Bolivia</option>
-                                              <option value="Bonaire" >Bonaire</option>
-                                              <option value="Bosnia & Herzegovina" >Bosnia & Herzegovina</option>
-                                              <option value="Botswana" >Botswana</option>
-                                              <option value="Brazil" >Brazil</option>
-                                              <option value="Brunei Darussalam" >Brunei Darussalam</option>
-                                              <option value="Bulgaria" >Bulgaria</option>
-                                              <option value="Burkina Faso" >Burkina Faso</option>
-                                              <option value="Burundi" >Burundi</option>
-                                              <option value="Cambodia" >Cambodia</option>
-                                              <option value="Cameroon" >Cameroon</option>
-                                              <option value="Canada" >Canada</option>
-                                              <option value="Cape Verde" >Cape Verde</option>
-                                              <option value="Cayman Islands" >Cayman Islands</option>
-                                              <option value="Central African Republic" >Central African Republic</option>
-                                              <option value="Chad" >Chad</option>
-                                              <option value="Chile" >Chile</option>
-                                              <option value="China" >China</option>
-                                              <option value="Colombia" >Colombia</option>
-                                              <option value="Comoros" >Comoros</option>
-                                              <option value="Congo" >Congo</option>
-                                              <option value="Costa Rica" >Costa Rica</option>
-                                              <option value="Côte d'Ivoire" >Côte d'Ivoire</option>
-                                              <option value="Croatia" >Croatia</option>
-                                              <option value="Cuba" >Cuba</option>
-                                              <option value="Curaçao" >Curaçao</option>
-                                              <option value="Cyprus" >Cyprus</option>
-                                              <option value="Czech Republic" >Czech Republic</option>
-                                              <option value="Denmark" >Denmark</option>
-                                              <option value="Djibouti" >Djibouti</option>
-                                              <option value="Dominica" >Dominica</option>
+                                              <option value="125" >Afghanistan</option>
+                                              <option value="126" >Albania</option>
+                                              <option value="2" >Algeria</option>
+                                              <option value="128" >Andorra</option>
+                                              <option value="3" >Angola</option>
+                                              <option value="4" >Anguilla</option>
+                                              <option value="5" >Antigua & Barbuda</option>
+                                              <option value="6" >Argentina</option>
+                                              <option value="7" >Armenia</option>
+                                              <option value="225" >Aruba</option>
+                                              <option value="8" >Australia</option>
+                                              <option value="9" >Austria</option>
+                                              <option value="10" >Azerbaijan</option>
+                                              <option value="11" >Bahamas</option>
+                                              <option value="12" >Bahrain</option>
+                                              <option value="127" >Bangladesh</option>
+                                              <option value="13" >Barbados</option>
+                                              <option value="14" >Belarus</option>
+                                              <option value="15" >Belgium</option>
+                                              <option value="16" >Belize</option>
+                                              <option value="17" >Bermuda</option>
+                                              <option value="208" >Bhutan</option>
+                                              <option value="18" >Bolivia</option>
+                                              <option value="229" >Bonaire</option>
+                                              <option value="129" >Bosnia & Herzegovina</option>
+                                              <option value="19" >Botswana</option>
+                                              <option value="20" >Brazil</option>
+                                              <option value="21" >Brunei Darussalam</option>
+                                              <option value="22" >Bulgaria</option>
+                                              <option value="130" >Burkina Faso</option>
+                                              <option value="131" >Burundi</option>
+                                              <option value="132" >Cambodia</option>
+                                              <option value="133" >Cameroon</option>
+                                              <option value="23" >Canada</option>
+                                              <option value="134" >Cape Verde</option>
+                                              <option value="24" >Cayman Islands</option>
+                                              <option value="135" >Central African Republic</option>
+                                              <option value="136" >Chad</option>
+                                              <option value="25" >Chile</option>
+                                              <option value="26" >China</option>
+                                              <option value="27" >Colombia</option>
+                                              <option value="137" >Comoros</option>
+                                              <option value="138" >Congo</option>
+                                              <option value="28" >Costa Rica</option>
+                                              <option value="139" >Côte d'Ivoire</option>
+                                              <option value="29" >Croatia</option>
+                                              <option value="140" >Cuba</option>
+                                              <option value="221" >Curaçao</option>
+                                              <option value="30" >Cyprus</option>
+                                              <option value="31" >Czech Republic</option>
+                                              <option value="32" >Denmark</option>
+                                              <option value="141" >Djibouti</option>
+                                              <option value="33" >Dominica</option>
                                               <option value="34" >Dominican Republic</option>
                                               <option value="142" >East Timor</option>
                                               <option value="35" >Ecuador</option>
@@ -536,16 +547,16 @@
                                     <label for="birthday">Date of birth</label>
                                
                                       <div class="input-group input-append date" id="dateRangePicker">
-                                            <input type="text" class="form-control" name="birthday" />
+                                            <input type="text" class="form-control" name="birthday"  value=<?php echo $birthday;?> />
                                             <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                                       </div
                                 </div>
                               <div class="form-group">
                                 <label for="website">website</label>
-                                <input type="text" class="form-control" name="website" placeholder="Name of the website">
+                                <input type="text" class="form-control" name="website" value=<?php echo $website;?>>
                               </div>
                               <div class="form-group">
-                              <button type="submit" name="add_contact" class="btn btn-lg btn-success pull-right">Add contact</button>
+                              <button type="submit" name="update_contact" class="btn btn-lg btn-success pull-right">Edit contact</button>
 
                               </div>
                         </form>
