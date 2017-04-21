@@ -13,7 +13,7 @@ include "include/header.php";
          if( isset($_SESSION['username'])!="" ){
             header("Location: home.php");
         }
-        include "include/navigationbar.php" ;
+       
         include_once 'include/dbconnection.php';
         $error=false;
 
@@ -137,14 +137,17 @@ include "include/header.php";
 
     }
 ?>
-
-<div class="container signcover" >
+<section>
+        <?php include "include/navbarlanding.php"; ?>  
+</section>
+<section class="signcover">
+<div class="container " >
     <div class="row">
 
         <div class="col-sm-4">
 
         </div>
-        <div class="col-sm-5 ">
+        <div class="col-sm-4 signupbackground">
 
             <?php
 
@@ -191,19 +194,19 @@ include "include/header.php";
                     </div>
                     <div class="form-group">
                         <button  type="submit" class="btn btn-primary form-control" name="signup">Sign up</button>
-                         <span>Already Register? Log in here. <a href="registration.php" class="btn bt-sm">Login </a></span>
+                         <span>Already Register? Log in here. <a href="login.php" class="logAlter">Login </a></span>
                     </div>
                 </form>
 
             </div>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-4"></div>
 
     </div>
 
 </div>
 <!-- Latest compiled and minified JavaScript -->
-
+</section>
 
 </body>
 

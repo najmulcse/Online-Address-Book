@@ -18,8 +18,12 @@ include "include/header.php";
             header("Location: home.php");
 
         }
-        include "include/navigationbar.php" ;
-        include_once 'include/dbconnection.php';
+    
+?>
+
+
+<?php  include_once 'include/dbconnection.php';
+        include "allfunctions.php";
         $error=false;
         $passError="";
         $usernameError="";
@@ -44,34 +48,25 @@ include "include/header.php";
 
             if(!$error)
             {
-                $hashFormat = "$2y$10$";
-                $salt = "iusesomecrazystrings22";
-                $hashF_and_salt = $hashFormat . $salt;
-                $password = crypt($password, $hashF_and_salt);
-                $query = "SELECT username,password from users where username='$username'";
-                $query_username_result = mysqli_query($connection,$query);
-                $row=mysqli_fetch_array($query_username_result);
-                $count_user =mysqli_num_rows($query_username_result);
-                   if($count_user ==1 && $row['password']==$password){
-                       $_SESSION['username']=$row['username'];
-                       header("Location: home.php");
-                      }
-                   else
-                       {
-                       $errMSG = "Wrong username or password, Try again...";
-                       }
+               $errMSG=check_login($username,$password);
             }
         }
 
 ?>
+<section>
+ <?php include "include/navbarlanding.php"; ?>  
+ </section>
 
-<div class="container">
+<section class="logcover">
+
+<div class="container ">
     <div class="row">
 
         <div class="col-sm-4">
 
         </div>
-        <div class="col-sm-4 signupbackground">
+        <div class="col-sm-4 logbackground">
+            <div class=""> 
                 <h2>Login </h2>
                 <form action="login.php" method="POST">
 
@@ -103,11 +98,13 @@ include "include/header.php";
 
             </div>
         </div>
+        </div>
         <div class="col-sm-4"></div>
 
     </div>
 
 </div>
+</section>
 <!-- Latest compiled and minified JavaScript -->
 
 </body>

@@ -1,21 +1,18 @@
-<nav class="navbar navbar-default navbar-statis-top">
-    <div class="container">
-        <div class="navbar-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Branding Image -->
-           
-        <?php
-        $username="";
-        if( isset($_SESSION['username']) ){
-                   
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <?php
+            $username="";
+            if( isset($_SESSION['username']) ){
+                       
            // header("Location: home.php");
 
             ?>
@@ -44,17 +41,16 @@
             <?php
             $username="";
             if( isset($_SESSION['username'])!="" ){
-                        $username=$_SESSION['username'];
-                       
-
+                $username=$_SESSION['username'];
             ?>
-             
+             <li > <a href="home.php">Home</a></li>
             <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <?php echo $username ;?><span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
+                        <li> <a href="#"> <i class="fa  fa-btn fa-user-circle"> </i> Profile</a> </li>
                         <li><a href="logout.php"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                     </ul>
                 </li>
@@ -71,6 +67,8 @@
 
 
             </ul>
-        </div>
-    </div>
+</div>
+</div>
 </nav>
+
+

@@ -35,16 +35,15 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/formelements.css">
     <link href="css/bookadmin.css" rel="stylesheet">
     <link href="css/mystyle.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="css/formelements.css"> -->
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- Include Bootstrap Datepicker -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+    
 </head>
 
 <style type="text/css">
@@ -62,105 +61,9 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               <?php
-            $username="";
-            if( isset($_SESSION['username']) ){
-                       
-           // header("Location: home.php");
-
-            ?>
-            <a class="navbar-brand" href="home.php">
-                Online Address Book
-            </a>
-            <?php } else { ?>
-            <a class="navbar-brand" href="index.php">
-                Online Address Book
-            </a>
-            <?php } ?>
-
-
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-
-
-
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-
-
-            <?php
-            $username="";
-            if( isset($_SESSION['username'])!="" ){
-                $username=$_SESSION['username'];
-            ?>
-             
-            <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <?php echo $username ;?><span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu" role="menu">
-                        <li> <a href="#"> <i class="fa  fa-btn fa-user-circle"> </i> Profile</a> </li>
-                        <li><a href="logout.php"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                    </ul>
-                </li>
-             <?php  } else { 
-?>
-
-
-
-                <li><a href="login.php">Login</a></li>
-                <li><a href="registration.php">Register</a></li>
-<?php } ?>
-
-                
-
-
-            </ul>
-
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="add_contact_button">
-                        <a class=" btn btn-success " href="addNewContacts.php"><i class="fa fa-fw fa-dashboard"></i> Add new contact</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Import</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Export</a>
-                    </li>
-                   
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Contacts <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">List 1</a>
-                            </li>
-                            <li>
-                                <a href="#">List 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </div>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+        <section>
+          <?php include "include/navbar.php" ; ?>
+        </section>
 
         <div id="page-wrapper">
 
@@ -169,21 +72,7 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-8"></div>
-                            <div class="col-sm-4">
-                            <form action="" method="">
-                               <div class="input-group col-md-12">
-                                <input type="text" class="  search-query form-control" placeholder="Search" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                            </form>
-                            </div>
-                        </div>
+                        <?php include "search.php" ;?>
                         <section>
                     <div class="row">
                     <div style="height: 600px;">
@@ -368,166 +257,93 @@
                                               <option value="Denmark" >Denmark</option>
                                               <option value="Djibouti" >Djibouti</option>
                                               <option value="Dominica" >Dominica</option>
-                                              <option value="34" >Dominican Republic</option>
-                                              <option value="142" >East Timor</option>
-                                              <option value="35" >Ecuador</option>
-                                              <option value="36" >Egypt</option>
-                                              <option value="37" >El Salvador</option>
-                                              <option value="143" >England</option>
-                                              <option value="144" >Equatorial Guinea</option>
-                                              <option value="145" >Eritrea</option>
-                                              <option value="38" >Estonia</option>
-                                              <option value="146" >Ethiopia</option>
-                                              <option value="147" >Fiji</option>
-                                              <option value="39" >Finland</option>
-                                              <option value="40" >France</option>
-                                              <option value="213" >French Polynesia</option>
-                                              <option value="148" >Gabon</option>
-                                              <option value="149" >Gambia</option>
-                                              <option value="150" >Georgia</option>
-                                              <option value="41" >Germany</option>
-                                              <option value="42" >Ghana</option>
-                                              <option value="151" >Great Britain</option>
-                                              <option value="43" >Greece</option>
-                                              <option value="44" >Grenada</option>
-                                              <option value="232" >Guam</option>
-                                              <option value="45" >Guatemala</option>
-                                              <option value="152" >Guinea</option>
-                                              <option value="153" >Guinea-Bissau</option>
-                                              <option value="46" >Guyana</option>
-                                              <option value="154" >Haiti</option>
-                                              <option value="47" >Honduras</option>
-                                              <option value="48" >Hong Kong</option>
-                                              <option value="49" >Hungary</option>
-                                              <option value="50" >Iceland</option>
-                                              <option value="51" >India</option>
-                                              <option value="52" >Indonesia</option>
-                                              <option value="155" >Iran</option>
-                                              <option value="156" >Iraq</option>
-                                              <option value="53" >Ireland</option>
-                                              <option value="54" >Israel</option>
-                                              <option value="55" >Italy</option>
-                                              <option value="56" >Jamaica</option>
-                                              <option value="57" >Japan</option>
-                                              <option value="58" >Jordan</option>
-                                              <option value="59" >Kazakstan</option>
-                                              <option value="60" >Kenya</option>
-                                              <option value="157" >Kiribati</option>
-                                              <option value="61" >Korea</option>
-                                              <option value="62" >Kuwait</option>
-                                              <option value="160" >Kyrgyzstan</option>
-                                              <option value="161" >Laos</option>
-                                              <option value="63" >Latvia</option>
-                                              <option value="64" >Lebanon</option>
-                                              <option value="162" >Lesotho</option>
-                                              <option value="163" >Liberia</option>
-                                              <option value="164" >Libya</option>
-                                              <option value="165" >Liechtenstein</option>
-                                              <option value="65" >Lithuania</option>
-                                              <option value="66" >Luxembourg</option>
-                                              <option value="67" >Macau</option>
-                                              <option value="68" >Macedonia</option>
-                                              <option value="69" >Madagascar</option>
-                                              <option value="166" >Malawi</option>
-                                              <option value="70" >Malaysia</option>
-                                              <option value="167" >Maldives</option>
-                                              <option value="71" >Mali</option>
-                                              <option value="72" >Malta</option>
-                                              <option value="168" >Marshall Islands</option>
-                                              <option value="169" >Mauritania</option>
-                                              <option value="73" >Mauritius</option>
-                                              <option value="74" >Mexico</option>
-                                              <option value="170" >Micronesia</option>
-                                              <option value="75" >Moldova</option>
-                                              <option value="171" >Monaco</option>
-                                              <option value="172" >Mongolia</option>
-                                              <option value="173" >Montenegro</option>
-                                              <option value="76" >Montserrat</option>
-                                              <option value="174" >Morocco</option>
-                                              <option value="175" >Mozambique</option>
-                                              <option value="176" >Myanmar</option>
-                                              <option value="177" >Namibia</option>
-                                              <option value="178" >Nauru</option>
-                                              <option value="179" >Nepal</option>
-                                              <option value="77" >Netherlands</option>
-                                              <option value="78" >New Zealand</option>
-                                              <option value="79" >Nicaragua</option>
-                                              <option value="80" >Niger</option>
-                                              <option value="81" >Nigeria</option>
-                                              <option value="158" >North Korea</option>
-                                              <option value="82" >Norway</option>
-                                              <option value="83" >Oman</option>
-                                              <option value="84" >Pakistan</option>
+                                              <option value="Dominican Republic" >Dominican Republic</option>
+                                              <option value="East Timor" >East Timor</option>
+                                              <option value="Ecuador" >Ecuador</option>
+                                              <option value="Egypt" >Egypt</option>
+                                              <option value="El Salvado" >El Salvador</option>
+                                              <option value="England" >England</option>
+                                              <option value="Equatorial Guinea" >Equatorial Guinea</option>
+                                              <option value="Eritrea" >Eritrea</option>
+                                              <option value="Estonia" >Estonia</option>
+                                              <option value="Ethiopia" >Ethiopia</option>
+                                              <option value="Fiji" >Fiji</option>
+                                              <option value="Finland" >Finland</option>
+                                              <option value="France" >France</option>
+                                              <option value="French Polynesia" >French Polynesia</option>
+                                              <option value="Gabon" >Gabon</option>
+                                              <option value="Gambia" >Gambia</option>
+                                              <option value="Georgia" >Georgia</option>
+                                              <option value="Germany" >Germany</option>
+                                              <option value="Ghana" >Ghana</option>
+                                              <option value="Great Britain" >Great Britain</option>
+                                              <option value="Greece" >Greece</option>
+                                              <option value="Grenada" >Grenada</option>
+                                              <option value="Guam" >Guam</option>
+                                              <option value="Guatemala" >Guatemala</option>
+                                              <option value="Guinea" >Guinea</option>
+                                              <option value="Guinea-Bissau" >Guinea-Bissau</option>
+                                              <option value="Guyana" >Guyana</option>
+                                              <option value="Haiti" >Haiti</option>
+                                              <option value="Honduras" >Honduras</option>
+                                              <option value="Hong Kong" >Hong Kong</option>
+                                              <option value="Hungary" >Hungary</option>
+                                              <option value="Iceland" >Iceland</option>
+                                              <option value="India" >India</option>
+                                              <option value="Indonesia" >Indonesia</option>
+                                              <option value="Iran" >Iran</option>
+                                              <option value="Iraq" >Iraq</option>
+                                              <option value="Ireland" >Ireland</option>
+                                              <option value="Israel" >Israel</option>
+                                              <option value="Italy" >Italy</option>
+                                              <option value="Jamaica" >Jamaica</option>
+                                              <option value="Japan" >Japan</option>
+                                              <option value="Jordan" >Jordan</option>
+                                              <option value="Kazakstan" >Kazakstan</option>
+                                              <option value="Kenya" >Kenya</option>
+                                              <option value="Kiribati" >Kiribati</option>
+                                              <option value="Korea" >Korea</option>
+                                              <option value="Kuwait" >Kuwait</option>
+                                              <option value="Kyrgyzstan" >Kyrgyzstan</option>
+                                              <option value="Laos" >Laos</option>
+                                              <option value="Latvia" >Latvia</option>
+                                              <option value="Lebanon" >Lebanon</option>
+                                              <option value="Lesotho" >Lesotho</option>
+                                              <option value="Liberia" >Liberia</option>
+                                              <option value="Libya" >Libya</option>
+                                              <option value="Liechtenstein" >Liechtenstein</option>
+                                              <option value="Lithuania" >Lithuania</option>
+                                              <option value="Luxembourg" >Luxembourg</option>
+                                              <option value="Macau" >Macau</option>
+                                              <option value="Macedonia" >Macedonia</option>
+                                              <option value="Madagascar" >Madagascar</option>
+                                              <option value="Malawi" >Malawi</option>
+                                              <option value="Malaysia" >Malaysia</option>
+                                              <option value="Maldives" >Maldives</option>
+                                              <option value="Mali" >Mali</option>
+                                              <option value="Malta" >Malta</option>
+                                              <option value="Marshall Islands" >Marshall Islands</option>
+                                              <option value="Mexico" >Mexico</option>
+                                              
+                                              <option value="Nepal" >Nepal</option>
+                                              <option value="Netherlands" >Netherlands</option>
+                                              <option value="New Zealand" >New Zealand</option>
+                                            
+                                              <option value="Pakistan" >Pakistan</option>
                                               <option value="181" >Palau</option>
                                               <option value="85" >Panama</option>
                                               <option value="182" >Papua New Guinea</option>
                                               <option value="86" >Paraguay</option>
                                               <option value="87" >Peru</option>
-                                              <option value="88" >Philippines</option>
-                                              <option value="89" >Poland</option>
-                                              <option value="90" >Portugal</option>
-                                              <option value="209" >Puerto Rico</option>
-                                              <option value="91" >Qatar</option>
-                                              <option value="92" >Romania</option>
-                                              <option value="93" >Russia</option>
-                                              <option value="183" >Rwanda</option>
-                                              <option value="210" >Saint John, U.S. Virgin Islands </option>
-                                              <option value="94" >Saint Kitts & Nevis</option>
-                                              <option value="95" >Saint Lucia</option>
-                                              <option value="230" >Saint Martin</option>
-                                              <option value="96" >Saint Vincent and The Grenadines</option>
-                                              <option value="184" >Samoa</option>
-                                              <option value="185" >San Marino</option>
-                                              <option value="186" >São Tomé & Príncipe</option>
-                                              <option value="97" >Saudi Arabia</option>
-                                              <option value="98" >Senegal</option>
-                                              <option value="188" >Serbia</option>
-                                              <option value="189" >Seychelles</option>
-                                              <option value="190" >Sierra Leone</option>
-                                              <option value="99" >Singapore</option>
-                                              <option value="231" >Sint Maarten</option>
-                                              <option value="100" >Slovakia</option>
-                                              <option value="101" >Slovenia</option>
-                                              <option value="191" >Solomon Islands</option>
-                                              <option value="192" >Somalia</option>
-                                              <option value="102" >South Africa</option>
-                                              <option value="159" >South Kosovo</option>
-                                              <option value="194" >South Sudan</option>
-                                              <option value="103" >Spain</option>
-                                              <option value="104" >Sri Lanka</option>
-                                              <option value="193" >Sudan</option>
-                                              <option value="105" >Suriname</option>
-                                              <option value="106" >Sweden</option>
-                                              <option value="107" >Switzerland</option>
-                                              <option value="195" >Syria</option>
-                                              <option value="108" >Taiwan</option>
-                                              <option value="196" >Tajikistan</option>
-                                              <option value="109" >Tanzania</option>
-                                              <option value="110" >Thailand</option>
-                                              <option value="197" >Togo</option>
-                                              <option value="198" >Tonga</option>
-                                              <option value="111" >Trinidad & Tobago</option>
-                                              <option value="112" >Tunisia</option>
-                                              <option value="113" >Turkey</option>
-                                              <option value="199" >Turkmenistan</option>
-                                              <option value="114" >Turks & Caicos Islands</option>
-                                              <option value="200" >Tuvalu</option>
-                                              <option value="115" >Uganda</option>
-                                              <option value="201" >Ukraine</option>
-                                              <option value="116" >United Arab Emirates</option>
-                                              <option value="117" >United Kingdom</option>
-                                              <option value="1" >United States</option>
-                                              <option value="119" >Uruguay</option>
-                                              <option value="120" >Uzbekistan</option>
-                                              <option value="202" >Vanuatu</option>
-                                              <option value="203" >Vatican City</option>
-                                              <option value="121" >Venezuela</option>
-                                              <option value="122" >Vietnam</option>
-                                              <option value="123" >Virgin Islands, British</option>
-                                              <option value="124" >Yemen</option>
-                                              <option value="205" >Zaire</option>
-                                              <option value="206" >Zambia</option>
-                                              <option value="207" >Zimbabwe</option>
+                                              <option value="Philippines" >Philippines</option>
+                                              
+                                              <option value="Qatar" >Qatar</option>
+                                              <option value="Singapore" >Singapore</option>
+                                              
+                                              <option value="United Arab Emirates" >United Arab Emirates</option>
+                                              <option value="United Kingdom" >United Kingdom</option>
+                                              <option value="United States" >United States</option>                                            
+                                             <option value="Zimbabwe" >Zimbabwe</option>
                                           </select>
 
                               </div>
@@ -536,7 +352,7 @@
                                     <label for="birthday">Date of birth</label>
                                
                                       <div class="input-group input-append date" id="dateRangePicker">
-                                            <input type="text" class="form-control" name="birthday" />
+                                            <input type="date" class="form-control" name="birthday" />
                                             <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                                       </div
                                 </div>

@@ -1,3 +1,86 @@
 .add_contact_button a{
 	color: white;
 }
+
+.import_export_position li{
+
+	padding-top: 20px;
+}
+.signupbackground{
+	padding-top: 20px;
+	padding-bottom: 10px;
+	background-color: gray;
+}
+.logbackground{
+
+	padding-top: 50px;
+	padding-bottom: 30px;
+	background-color: gray;
+}
+.signcover{
+
+	background-color: #515151;
+	
+	padding-bottom: 78px;
+}
+.logcover{
+	background-color: #515151;
+	padding-bottom: 239px;
+}
+/*.logAlter{
+	background-color:black;
+}*/
+.landing_cover{
+	background-color: #29D5EA;
+	padding-bottom: 20px;	
+	padding-top: 10px;
+}
+.input_search{
+	background-color: white;
+
+}
+.edit_details{
+	background-color: black;
+}
+.landing_text{
+
+	text-align: center;
+	 font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform:uppercase;
+    font-weight:700;
+    font-size:20px;
+    line-height:30px;
+    margin-bottom:25px;
+    padding-top: 90px;
+}
+.footer_view p{
+
+	padding-bottom: : 100px;
+	
+
+}
+
+.landing_works_positon{
+	 text-align: center;
+
+	 font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    
+    font-weight:100;
+    font-size:16px;
+    
+    margin-bottom:25px;
+    padding-top: 30px;
+}
+.
+.interest_hover:hover{
+
+background-color: green;
+color:white;
+}
+
+
+.footer_cover{
+background-color: black;
+padding-bottom: 30px;
+text-align: center;
+}
