@@ -60,7 +60,7 @@
 
 
                 <li><a href="login.php">Login</a></li>
-                <li><a href="registration.php">Register</a></li>
+                <li><a href="registration.php">Sign up</a></li>
 <?php } ?>
 
                 

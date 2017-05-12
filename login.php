@@ -83,7 +83,7 @@ include "include/header.php";
                     }
                     ?>
                     <div class="form-group">
-                        <input class="form-control"required type="text" name="username" placeholder="Username">
+                        <input class="form-control" required type="text" name="username" placeholder="Username">
                         <span class="text-danger"><?php echo $usernameError ?></span>
                     </div>
                     <div class="form-group">

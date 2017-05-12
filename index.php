@@ -152,7 +152,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <section class="footer_cover">
     <footer class="footer_view">
-        <p>@onlineaddressbook.com</p>
+        <p t>@onlineaddressbook.com</p>
     </footer>
 </section>
 

@@ -67,14 +67,16 @@
                          <div class="col-sm-6">
                              
                          <?php    
-                         if(isset($_POST["export_contact"])){
-                                             
-                                export_Me();
 
-                            }
-                     ?><!-- 
-                                 <form class="" method="post" action="">
+                         if(isset($_SESSION['user_id']))
+                         {
+                            $user_id=$_SESSION['user_id'];
+                         }
+                         
+                     ?>
+                                 <form class="" method="post" action="export.php">
                                     <div class="form-group">
+                                    <input type="hidden" name="id" value="<?php echo $user_id; ?>" >
                                      <button  name="export_contact" type="" class="btn btn-default">Export Contacts</button>
                                      </div>
                                  </form>
@@ -82,7 +84,7 @@
                                     <div class="form-group">
                                      <button  name="import" type="sumbit" class="btn btn-default">Import Contacts</button>
                                      </div>
-                                 </form> -->
+                                 </form>
                               
                                  
                                 

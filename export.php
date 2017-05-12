@@ -1,32 +1,32 @@
                        
 
            <?php   
-                 
-                     
+            // ob_start();
+           // session_start();
+              include "include/dbconnection.php";  
 
-               
-                     function export_Me(){
-                        include "include/dbconnection.php";    
-                        
-                        $fp = fopen('contact.txt', 'w');
-                        $user_id=$_SESSION['user_id'];
+               if(isset($_POST["export_contact"])) {
+                                             
+                        global $connection;
+                        header('Content-disposition: attachment; filename=contact.csv');
+                        header('Content-type: text/plain');
+                        $output = fopen("php://output", "w");;
+                        $user_id=$_POST['id'];
+                    
                         $query="SELECT * from addresses where user_id='$user_id'";
                         $result=mysqli_query($connection,$query);
-                        while ($row = $result->fetch_assoc()) {
+            
+                         while($row = mysqli_fetch_assoc($result))  
+                          {  
+                             //  fputcsv($output, array($row['full_name'],$row['nick_name'],$row['email'],$row['street_address'],$row['city'],$row['country'],$row['phone1'],$row['phone2'],$row['birthday'],$row['website'])); 
+                              fputcsv($output, $row);
+                            
+                              
+                          }  
 
-                            fprintf($fp, "%s\n", $row['full_name']);
-                            fprintf($fp, "%s\n", $row['nick_name']);
-                            fprintf($fp, "%s\n", $row['email']);
-                            fprintf($fp, "%s\n", $row['phone']);
-                            fprintf($fp, "====\n");
-                        }
-
-                        fclose($fp);
-
-                        header('Content-disposition: attachment; filename=contact.txt');
-                        header('Content-type: text/plain');
-                        readfile('contact.txt');
-                        unlink('contact.txt');
-                      
-                        } 
+                        fclose($output);
+                        exit(0);
+                       
+                            }
+                   
                          ?>

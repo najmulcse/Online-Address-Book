@@ -59,7 +59,7 @@
 
 
                 <li><a href="login.php">Login</a></li>
-                <li><a href="registration.php">Register</a></li>
+                <li><a href="registration.php">Sign up</a></li>
 <?php } ?>
 
                 
@@ -73,12 +73,7 @@
                     <li class="active">
                         <a class=" " href="addNewContacts.php"><i class="fa fa-fw fa-dashboard"></i> Add new contact</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Import</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Export</a>
-                    </li>
+                    
                       <li>
                         <a href="home.php"><i class="fa fa-fw fa-bar-chart-o"></i> All contacts</a>
                     </li>

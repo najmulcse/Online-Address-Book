@@ -105,7 +105,7 @@
                 $country = mysqli_real_escape_string($connection,$country);
                 $phone1 = mysqli_real_escape_string($connection,$phone1);
                 $phone2 = mysqli_real_escape_string($connection,$phone2);
-                $website = mysqli_real_escape_string($connection,$birthday);
+                $website = mysqli_real_escape_string($connection,$website);
                 $street_address = mysqli_real_escape_string($connection,$street_address);
                 $birthday=mysqli_real_escape_string($connection,$birthday);
                  if (empty($full_name)) {
@@ -167,7 +167,7 @@
                        <form action="addNewContacts.php" method="POST">
                               <div class="form-group">
                                 <label for="name">Full Name *</label>
-                                <input type="text" class="form-control" name="full_name" placeholder="Full name">
+                                <input type="text" class="form-control" name="full_name" placeholder="Full name" required>
                                  <span class="text-danger"><?php echo $fullnameError ?></span>
                               </div>
                               <div class="form-group">
@@ -176,8 +176,8 @@
                               </div>
                                <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email">
-                                 <span class="text-danger"><?php echo $emailError ?></span>
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                 <span class="text-danger"  ><?php echo $emailError ?></span>
                               </div>
                               <div class="form-group">
                                <div class="form-group">
@@ -199,7 +199,7 @@
                               </div>
                                <div class="form-group">
                                 <label for="name">Country</label>
-                                 <select id="to-country-id" name="country" class="country last lastrow form-control">
+                                 <select id="to-country-id" name="country" class="country last lastrow form-control" required>
                                               <option value="">Select Country</option>
                                               <option value="United States" >United States</option>
                                               <option value="Canada" >Canada</option>
